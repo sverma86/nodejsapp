@@ -1,0 +1,21 @@
+{
+  "name": "crudopmango",
+  "version": "1.0.0",
+  "description": "crude",
+  "main": "index.js",
+  "scripts": {
+    "test": "suneel"
+  },
+  "author": "suneel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.1",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
+  }
+}

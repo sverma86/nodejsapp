@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="main.js"></script>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+</style>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var d = 0; d < dropdowns.length; d++) {
+      var openDropdown = dropdowns[d];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="/news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">Admin</a>
+    <div class="dropdown-content" id="myDropdown">
+      <a href="/Employee">Employee Setup</a>
+      <a href="/Role">Role Setup</a>
+      <a href="/Department">Department Setup</a>
+    </div>
+  </li>
+</ul>
+<H1>Department Information</H1>
+<table border="4px" border-color="Blue" width="100%">
+<tr border="2px" bgcolor="#8c7373">
+<th style="Text-align:left"> Department Name  </th>
+<th Colspan="2"> Action   </th>
+<th> </th>
+</tr>
+  <% for(var i=0; i<departments.length; i++) {%>
+<tr border="2px" border-color="Red" >
+      <td width="74%"><span><%= departments[i].departmentname %></span> </td>
+   
+
+<% if (departmentsedit[0].departmentname =="" ){%>
+ <td   bgcolor="#00bfff" style="Text-align:Right" width="8%"><a class="a-inside edit" href="../Department/Edit/<%=departments[i].departmentname%>">Update</a>
+  </td>
+     
+       <td   bgcolor="#00bfff" style="Text-align:Right" width="8%"><a class="a-inside edit" href="../Department/Delete/<%=departments[i].departmentname%>">Delete</a>
+  </td>
+<% }else{ %>
+ <td colspan="2"  bgcolor="#00bfff" style="Text-align:Right" width="8%"><a class="a-inside edit" href="../">Cancel</a>
+  </td>
+     
+      
+<%}%>
+
+
+    
+ 
+</tr>
+  <% } %>
+  
+<table>
+</br>
+</br>
+
+<H1>Role Form</H1>
+<form action="/Department" method="POST">
+<table border="4px" border-color="Red" width="100%" >
+<tr>
+<td width="62%">
+<span> Department Name</span><input type="text" placeholder="name" value="<%=departmentsedit[0].departmentname %>" name="departmentname" >
+</td>
+
+<td width="38%">
+<% if (departmentsedit[0].departmentname =="" ){%>
+<button type="submit" value="save" name="action" >Save Record</button>
+<% }else{ %>
+<button type="submit" value="update" name="action">Update Record</button>
+<%}%>
+</td>
+   
+</tr>
+   </table>
+   
+  </form>
+</body>
+</html>

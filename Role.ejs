@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body>
+  May Node and Express be with you.
+
+  <ul class="Roles">
+  <% for(var i=0; i<Roles.length; i++) {%>
+    <li class="quote">
+      <span><%= Roles[i].name %></span>
+      <span><%= Roles[i].rolename %></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <form action="/Roles" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="rolename" name="rolename">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
